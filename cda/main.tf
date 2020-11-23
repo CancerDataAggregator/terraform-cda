@@ -27,7 +27,7 @@ module "enable-services" {
 
 # gcp networking, k8 cluster
 module "core-infrastructure" {
-  source = "github.com/broadinstitute/terraform-cda.git//modules/core-infrastructure?ref=master"
+  source = "github.com/broadinstitute/terraform-cda.git//modules/core-infrastructure?ref=main"
 
   dependencies = [module.enable-services]
 
@@ -46,29 +46,5 @@ module "core-infrastructure" {
   providers = {
     google.target      = google
     google-beta.target = google-beta
-  }
-}
-# dns ips, sql server and dbs
-module "cda-app" {
-  source = "github.com/broadinstitute/terraform-cda.git//modules/cda-app?ref=master"
-
-  dependencies = [module.core-infrastructure]
-
-  google_project            = var.google_project
-  dns_name                  = var.dns_name
-  db_version                = var.db_version
-  environment               = var.environment
-  workloadid_names          = local.workloadid_names
-  enable_private_services   = var.enable_private_services
-  private_network_self_link = module.core-infrastructure.network-self-link
-  ip_only                   = var.ip_only
-  dns_zone                  = var.dns_zone
-  db_tier                   = var.cloudsql_tier
-
-  providers = {
-    google.target            = google
-    google-beta.target       = google-beta
-    google-beta.cda-dns = google-beta
-    vault.target             = vault.broad
   }
 }

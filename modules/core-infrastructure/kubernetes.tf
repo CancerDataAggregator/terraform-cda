@@ -1,6 +1,6 @@
 module "k8s-master" {
   # terraform-shared repo
-  source       = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-master?ref=k8s-cluster-monitoring-0.0.3-tf-0.12"
+  source       = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-master?ref=k8s-node-pool-0.2.3-tf-0.12"
   dependencies = [google_compute_network.network, google_compute_subnetwork.subnetwork, var.dependencies]
 
   name                     = local.master_name
@@ -20,7 +20,7 @@ module "k8s-master" {
 
 module "k8s-nodes" {
   # terraform-shared repo
-  source       = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-cluster-monitoring-0.0.3-tf-0.12"
+  source       = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-node-pool?ref=k8s-node-pool-0.2.3-tf-0.12"
   for_each     = var.node_regions
   dependencies = [module.k8s-master, var.dependencies]
 

@@ -43,7 +43,7 @@ variable "region" {
 
 variable "version_prefix" {
   type        = string
-  default     = "1.17.12-gke.1504"
+  default     = "1.17.13-gke.1400"
   description = "version of gke to be deployed"
 }
 
@@ -55,22 +55,10 @@ variable "enable_flow_logs" {
 
 ## cda-app vars
 
-variable "cloudsql_tier" {
-  type        = string
-  description = "Custom tier (DB instance size) for CloudSQL instances"
-  default     = ""
-}
-
 variable "dns_name" {
   type        = string
   description = "List of DNS names to generate global IP addresses, A-records, and CNAME-records for."
   default     = ""
-}
-
-variable "db_version" {
-  type        = string
-  description = "Postgres db verion"
-  default     = "POSTGRES_11"
 }
 
 variable "environment" {
@@ -87,12 +75,6 @@ variable "dns_zone" {
 
 locals {
   workloadid_names = [var.environment]
-}
-
-variable "enable_private_services" {
-  type        = bool
-  description = "Enable flag for a private sql instance if set to true, a private sql isntance will be created."
-  default     = true
 }
 
 variable "ip_only" {
