@@ -80,14 +80,3 @@ jobs:
         run: terraform apply -var-file=tfvars/${{ matrix.environment }}.tfvars -input=false -auto-approve -no-color
         working-directory: ${{ env.terraform_directory }}
         continue-on-error: true
-
-      - name: "${{ matrix.environment }} Slack job status"
-        if: always()
-        uses: broadinstitute/action-slack@v2
-        with:
-          status: ${{ job.status }}
-          author_name: Terraform deploy
-          only_mention_fail: smark,fboulnois
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
