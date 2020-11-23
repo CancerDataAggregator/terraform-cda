@@ -1,0 +1,9 @@
+## core-infrastructure vars
+google_project  = "broad-cda-dev"
+k8_network_name = "dev-network"
+k8_subnet_name  = "dev-subnet"
+## cda-app vars
+dns_name      = "cda"
+environment   = "dev"
+ip_only       = "false"
+dns_zone      = "cda-dev"
