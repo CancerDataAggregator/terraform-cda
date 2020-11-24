@@ -5,9 +5,8 @@ env:
 on:
   push:
     branches:
-      - master
+      - main
     paths:
-      - '!old/**'
       - '!.github/**'
       - '.github/workflows/terraformMergeApply.yml'
       - 'cda/**'
