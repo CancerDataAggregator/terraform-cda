@@ -48,3 +48,23 @@ module "core-infrastructure" {
     google-beta.target = google-beta
   }
 }
+
+# dns ips
+module "cda-app" {
+  source = "github.com/broadinstitute/terraform-cda.git//modules/cda-app?ref=main"
+
+  dependencies = [module.core-infrastructure]
+
+  google_project            = var.google_project
+  dns_name                  = var.dns_name
+  environment               = var.environment
+  ip_only                   = var.ip_only
+  dns_zone                  = var.dns_zone
+
+  providers = {
+    google.target            = google
+    google-beta.target       = google-beta
+    google-beta.cda-dns      = google-beta
+    vault.target             = vault.broad
+  }
+}
