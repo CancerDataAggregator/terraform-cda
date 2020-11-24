@@ -55,16 +55,16 @@ module "cda-app" {
 
   dependencies = [module.core-infrastructure]
 
-  google_project            = var.google_project
-  dns_name                  = var.dns_name
-  environment               = var.environment
-  ip_only                   = var.ip_only
-  dns_zone                  = var.dns_zone
+  google_project = var.google_project
+  dns_name       = var.dns_name
+  environment    = var.environment
+  ip_only        = var.ip_only
+  dns_zone       = var.dns_zone
 
   providers = {
-    google.target            = google
-    google-beta.target       = google-beta
-    google-beta.cda-dns      = google-beta
-    vault.target             = vault.broad
+    google.target       = google
+    google-beta.target  = google-beta
+    google-beta.cda-dns = google-beta
+    vault.target        = vault.broad
   }
 }
