@@ -27,7 +27,7 @@ module "enable-services" {
 
 # gcp networking, k8 cluster
 module "core-infrastructure" {
-  source = "github.com/CancerDataAggregator/terraform-cda.git//modules/core-infrastructure?ref=main"
+  source = "./modules//core-infrastructure"
 
   dependencies = [module.enable-services]
 
@@ -40,7 +40,6 @@ module "core-infrastructure" {
   machine_type     = var.machine_type
   version_prefix   = var.version_prefix
   dns_zone_name    = var.dns_zone
-  argocd_cidrs     = var.argocd_cidrs
   enable_flow_logs = var.enable_flow_logs
 
   providers = {
@@ -51,7 +50,7 @@ module "core-infrastructure" {
 
 # dns ips
 module "cda-app" {
-  source = "github.com/CancerDataAggregator/terraform-cda.git//modules/cda-app?ref=main"
+  source = "./modules//cda-app"
 
   dependencies = [module.core-infrastructure]
 
