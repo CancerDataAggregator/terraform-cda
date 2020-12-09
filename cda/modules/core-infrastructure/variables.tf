@@ -128,34 +128,3 @@ variable "dns_zone_name" {
   description = "If not null will create a DNS Zone"
   default     = ""
 }
-
-variable "broad_range_cidrs" {
-  description = "default broad external ips"
-  type        = list
-  default = [
-    "69.173.112.0/21",
-    "69.173.127.232/29",
-    "69.173.127.128/26",
-    "69.173.127.0/25",
-    "69.173.127.240/28",
-    "69.173.127.224/30",
-    "69.173.127.230/31",
-    "69.173.120.0/22",
-    "69.173.127.228/32",
-    "69.173.126.0/24",
-    "69.173.96.0/20",
-    "69.173.64.0/19",
-    "69.173.127.192/27",
-    "69.173.124.0/23"
-  ]
-}
-
-variable "argocd_cidrs" {
-  description = "argocd broad external ips to be added to the master auth network"
-  type        = list
-  default     = []
-}
-
-locals {
-  broad_range_cidrs = var.argocd_cidrs != "" ? concat(var.broad_range_cidrs, var.argocd_cidrs) : var.broad_range_cidrs
-}

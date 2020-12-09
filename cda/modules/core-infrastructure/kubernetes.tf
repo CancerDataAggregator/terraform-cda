@@ -3,13 +3,12 @@ module "k8s-master" {
   source       = "github.com/broadinstitute/terraform-shared.git//terraform-modules/k8s-master?ref=k8s-node-pool-0.2.3-tf-0.12"
   dependencies = [google_compute_network.network, google_compute_subnetwork.subnetwork, var.dependencies]
 
-  name                     = local.master_name
-  location                 = var.master_region
-  version_prefix           = var.version_prefix
-  release_channel          = var.gke_release_channel
-  network                  = var.k8_network_name
-  subnetwork               = var.k8_subnet_name
-  authorized_network_cidrs = local.broad_range_cidrs
+  name            = local.master_name
+  location        = var.master_region
+  version_prefix  = var.version_prefix
+  release_channel = var.gke_release_channel
+  network         = var.k8_network_name
+  subnetwork      = var.k8_subnet_name
   ip_allocation_policy = {
     cluster_secondary_range_name  = "pods"
     services_secondary_range_name = "services"
