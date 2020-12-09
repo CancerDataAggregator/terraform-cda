@@ -28,3 +28,6 @@ bq.tf
 !/cda/tfvars/*
 !/environments/*/variables.tf
 !/cda/variables.tf
+
+#intellij
+.idea/

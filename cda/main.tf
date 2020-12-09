@@ -27,7 +27,7 @@ module "enable-services" {
 
 # gcp networking, k8 cluster
 module "core-infrastructure" {
-  source = "github.com/broadinstitute/terraform-cda.git//modules/core-infrastructure?ref=main"
+  source = "github.com/CancerDataAggregator/terraform-cda.git//modules/core-infrastructure?ref=main"
 
   dependencies = [module.enable-services]
 
@@ -51,7 +51,7 @@ module "core-infrastructure" {
 
 # dns ips
 module "cda-app" {
-  source = "github.com/broadinstitute/terraform-cda.git//modules/cda-app?ref=main"
+  source = "github.com/CancerDataAggregator/terraform-cda.git//modules/cda-app?ref=main"
 
   dependencies = [module.core-infrastructure]
 
