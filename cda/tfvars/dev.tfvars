@@ -7,3 +7,7 @@ dns_name    = "cda"
 environment = "dev"
 ip_only     = "false"
 dns_zone    = "cda-dev"
+namespace   = "dev"
+gsa_name    = "bq-cda-sa"
+ksa_name    = "cda"
+roles       = ["roles/bigquery.admin"]

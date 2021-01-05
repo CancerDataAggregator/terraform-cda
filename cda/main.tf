@@ -59,6 +59,10 @@ module "cda-app" {
   environment    = var.environment
   ip_only        = var.ip_only
   dns_zone       = var.dns_zone
+  namespace      = var.dns_zone
+  gsa_name       = var.gsa_name
+  ksa_name       = var.ksa_name
+  roles          = var.roles
 
   providers = {
     google.target       = google
