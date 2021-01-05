@@ -17,3 +17,6 @@ tfstate_svc.json
 !/cda/tfvars/*
 !/cda/modules/*
 !/cda/variables.tf
+
+#intellij
+.idea/
