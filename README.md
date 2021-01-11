@@ -1,8 +1,8 @@
-![Terraform Apply](https://github.com/CancerDataAggregator/terraform-cda/workflows/Terraform%20Apply/badge.svg)
+[![Terraform Apply](https://github.com/CancerDataAggregator/terraform-cda/workflows/Terraform%20Apply/badge.svg)](https://github.com/CancerDataAggregator/terraform-cda/actions?query=workflow%3A%22Terraform+Apply%22)
 
 # terraform-cda
 
-Terraform code to setup various GCP environments for the cda Data Repo.
+Terraform code to setup various GCP environments for the CDA service layer.
 
 ## Quickstart
 
@@ -24,15 +24,13 @@ git clone https://github.com/CancerDataAggregator/terraform-cda.git
 cd cda
 docker run --rm -it -v "$PWD":/working -v ${HOME}/.vault-token:/root/.vault-token broadinstitute/dsde-toolbox:consul-0.20.0 ./mkEnv.sh -e <env>
 ./terraform.sh init -backend-config=bucket=broad-cda-dev
-./terraform.sh plan -var-file=tfvars/<env>.tfvars
-./terraform.sh apply -var-file=tfvars/<env>.tfvars
+./terraform.sh plan -var-file=tfvars/dev.tfvars
+./terraform.sh apply -var-file=tfvars/dev.tfvars
 ```
-## Variables
-- `<env>` should correspond to the environment to deploy (typically either `dev`
-or `prod`)
-- `<google_project>` is for the statefile its the name of the google project typically
+## Notes
+- Only `dev` is supported currently
 
 ## Github Actions
-- On PR a terraform plan will be made for the following environments [`[alpha, perf, staging, production]`](https://github.com/CancerDataAggregator/terraform-cda/blob/ms-tfvars/.github/workflows/terraformPrPlan.yml#L16)
-- On merge a terraform Apply will be made for the following environments [`[alpha, perf, staging, production]`](https://github.com/CancerDataAggregator/terraform-cda/blob/ms-tfvars/.github/workflows/terraformPrPlan.yml#L16)
+- On PR a terraform plan will be made for the following environments [`[dev]`](https://github.com/CancerDataAggregator/terraform-cda/blob/main/.github/workflows/terraformPrPlan.yml#L17)
+- On merge a terraform Apply will be made for the following environments [`[dev]`](https://github.com/CancerDataAggregator/terraform-cda/blob/main/.github/workflows/terraformMergeApply.yml#L18)
 - To not plan add label `skip-ci` to your PR
