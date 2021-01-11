@@ -33,4 +33,4 @@ docker run --rm -it -v "$PWD":/working -v ${HOME}/.vault-token:/root/.vault-toke
 ## Github Actions
 - On PR a terraform plan will be made for the following environments [`[dev]`](https://github.com/CancerDataAggregator/terraform-cda/blob/main/.github/workflows/terraformPrPlan.yml#L17)
 - On merge a terraform Apply will be made for the following environments [`[dev]`](https://github.com/CancerDataAggregator/terraform-cda/blob/main/.github/workflows/terraformMergeApply.yml#L18)
-- To not plan add label `skip-ci` to your PR
+- To not plan or apply changes add the label `skip-ci` to your PR
