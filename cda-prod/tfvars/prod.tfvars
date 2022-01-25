@@ -1,0 +1,14 @@
+## core-infrastructure vars
+google_project  = "broad-cda-prod"
+project = "broad-cda-prod"
+k8_network_name = "prod-network"
+k8_subnet_name  = "prod-subnet"
+## cda-app vars
+dns_name    = "cda"
+environment = "prod"
+ip_only     = "false"
+dns_zone    = "cda-prod"
+namespace   = "dev"
+gsa_name    = "bq-cda-sa"
+ksa_name    = "cda"
+roles       = ["roles/bigquery.admin"]
