@@ -25,9 +25,18 @@ variable "owner" {
   default     = "cda"
 }
 
+variable "master_region" {
+  type        = string
+  description = "GCP region being used"
+  default     = null
+}
+
 locals {
-  owner   = var.owner == "" ? terraform.workspace : var.owner
-  service = "cda"
+  owner             = var.owner == "" ? terraform.workspace : var.owner
+  service           = "cda"
+  container_name    = "cda"
+  master_name       = "cda-master-${var.master_region}"
+  error_metric_name = "cda-prod-errors"
 }
 
 ## new
