@@ -54,6 +54,7 @@ module "cda-app" {
 
   dependencies = [module.core-infrastructure]
 
+  master_region  = var.region
   google_project = var.google_project
   dns_name       = var.dns_name
   environment    = var.environment
